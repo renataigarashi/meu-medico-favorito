@@ -1,8 +1,12 @@
 const express = require("express");
 const app = express();
-require("./Doctors");
+require("./models/Doctors");
+const doctors = require("./routes/doctors");
+
+
 
 app.use(express.json());
+const index = require("./routes/index");
 
 app.use(function(req, res, next) {
     res.header("Acess-Control-Allow-Origin", "*") //informo que a minha api pode ser chamada de qualquer lugar, um browser, por ex.
@@ -25,6 +29,9 @@ app.options("/*", (req, res)=> {
     );
     res.send("send something whatever");
 });
+
+app.use("/doctors", doctors);
+app.use("/", index);
 
 module.exports = {
     app
