@@ -13,4 +13,11 @@ router.get("/:id", controller.getDoctorById);
 
 //rota capaz de alterar todo os medicos
 router.put("/:id", controller.updateDoctor);
+
+//rota alterar favorito
+router.patch("/:id/favorite", controller.updateFavorite);
+
+//rota deletar
+router.delete("/:id", controller.deleteDoctor);
+
 module.exports = router;
